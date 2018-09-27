@@ -1,4 +1,4 @@
-package model;
+package com.products.api.model;
 
 import java.util.List;
 
@@ -26,12 +26,12 @@ public class Product {
 	
 	private String description;
 	
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "product_market", joinColumns = { @JoinColumn(name = "product_id") }, inverseJoinColumns = {
 				@JoinColumn(name = "market_id") })
 	private List<Market> targetMarket;
 	
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "product_stack", joinColumns = { @JoinColumn(name = "product_id") }, inverseJoinColumns = {
 				@JoinColumn(name = "stack_id") })
 	private List<Market> stack;
