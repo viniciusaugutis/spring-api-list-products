@@ -5,7 +5,4 @@
 - [x] Busca de mercado alvo do produto
 - [x] Busca de tecnologias do produto
 - [x] Busca de produtos com filtro personalizado
-- [x] Visualização da API no Swagger
-```shell
-http://localhost:8080/swagger-ui.html
-```
+- [x] Visualização da API no [Swagger](https://api-list-products.herokuapp.com/swagger-ui.html) 
