@@ -68,6 +68,11 @@ public class ProductRepositoryImpl implements ProductRepositoryQuery {
 			Expression<Integer> marketExpression = root.join("targetMarket").get("id");
 			predicates.add(marketExpression.in(productFilter.getTargetMarket()));
 		}
+		
+		if (productFilter.getStack() != null) {
+			Expression<Integer> marketExpression = root.join("stack").get("id");
+			predicates.add(marketExpression.in(productFilter.getStack()));
+		}
 
 		return predicates.toArray(new Predicate[predicates.size()]);
 	}
