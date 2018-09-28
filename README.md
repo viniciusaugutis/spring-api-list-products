@@ -1,6 +1,6 @@
 # API para listagem de produtos
 
-[Demo](https://api-list-products.herokuapp.com/produtos)
+[Demo](https://api-list-products.herokuapp.com/products)
 
 ## Features
 - [x] API Restful
