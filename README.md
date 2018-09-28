@@ -8,3 +8,12 @@
 - [x] Busca de tecnologias do produto
 - [x] Busca de produtos com filtro personalizado
 - [x] Visualização da API no [Swagger](https://api-list-products.herokuapp.com/swagger-ui.html) 
+
+## Tecnologias
+- [x] SpringBoot
+- [x] SpringData
+- [x] JPA Criteria
+- [x] Flyway
+- [x] Swagger
+- [x] PostgreSQL
+- [x] Junit
