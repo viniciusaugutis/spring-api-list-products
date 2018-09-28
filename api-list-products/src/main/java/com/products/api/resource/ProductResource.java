@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.products.api.model.Product;
 import com.products.api.repository.filter.ProductFilter;
+import com.products.api.repository.projection.ProductSummary;
 import com.products.api.service.ProductService;
 
 @RestController
@@ -28,7 +29,7 @@ public class ProductResource {
 	private ProductService productService;
 
 	@GetMapping
-	public Page<Object> findAll(ProductFilter productFilter, Pageable pageable) {
+	public Page<ProductSummary> findAll(ProductFilter productFilter, Pageable pageable) {
 		return productService.filterProduct(productFilter, pageable);
 	}
 

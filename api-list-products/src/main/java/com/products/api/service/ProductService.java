@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.products.api.model.Product;
 import com.products.api.repository.ProductRepository;
 import com.products.api.repository.filter.ProductFilter;
+import com.products.api.repository.projection.ProductSummary;
 
 @Service
 public class ProductService {
@@ -17,7 +18,7 @@ public class ProductService {
 	@Autowired
 	private ProductRepository productRepository;
 	
-	public Page<Object> filterProduct(ProductFilter productFilter, Pageable pageable) {
+	public Page<ProductSummary> filterProduct(ProductFilter productFilter, Pageable pageable) {
 		return productRepository.filterProduct(productFilter, pageable);
 	}
 

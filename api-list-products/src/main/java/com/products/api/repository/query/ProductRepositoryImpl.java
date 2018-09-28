@@ -31,7 +31,7 @@ public class ProductRepositoryImpl implements ProductRepositoryQuery {
 	private EntityManager manager;
 
 	@Override
-	public Page<Object> filterProduct(ProductFilter productFilter, Pageable pageable) {
+	public Page<ProductSummary> filterProduct(ProductFilter productFilter, Pageable pageable) {
 		CriteriaBuilder builder = manager.getCriteriaBuilder();
 		CriteriaQuery<ProductSummary> criteria = builder.createQuery(ProductSummary.class);
 		Root<Product> root = criteria.from(Product.class);
@@ -51,7 +51,7 @@ public class ProductRepositoryImpl implements ProductRepositoryQuery {
 		TypedQuery<ProductSummary> query = manager.createQuery(criteria);
 		addRestrictionsPage(query, pageable);
 
-		return new PageImpl<>(query.getResultList().stream().distinct().collect(Collectors.toList()), pageable,
+		return new PageImpl<ProductSummary>(query.getResultList().stream().distinct().collect(Collectors.toList()), pageable,
 				total(productFilter));
 	}
 
