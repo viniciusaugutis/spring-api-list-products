@@ -17,25 +17,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.products.api.model.Product;
-import com.products.api.repository.ProductRepository;
 import com.products.api.repository.filter.ProductFilter;
+import com.products.api.service.ProductService;
 
 @RestController
 @RequestMapping("/products")
 public class ProductResource {
 
 	@Autowired
-	private ProductRepository productRepository;
+	private ProductService productService;
 
-	@GetMapping()
-	public Page<Product> findAll(ProductFilter topicFilter, Pageable pageable) {
-		return topicFilter.getName() == null ? productRepository.findAll(pageable)
-				: productRepository.findByNameContainingIgnoreCase(topicFilter.getName(), pageable);
+	@GetMapping
+	public Page<Object> findAll(ProductFilter productFilter, Pageable pageable) {
+		return productService.filterProduct(productFilter, pageable);
 	}
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Product> findById(@PathVariable Long id) {
-		Optional<Product> product = productRepository.findById(id);
+		Optional<Product> product = productService.findById(id);
 		if (product.isPresent())
 			return ResponseEntity.ok(product.get());
 		else
@@ -44,7 +43,7 @@ public class ProductResource {
 
 	@PostMapping
 	public ResponseEntity<Product> create(@Valid @RequestBody Product product) {
-		return ResponseEntity.status(HttpStatus.CREATED).body(productRepository.save(product));
+		return ResponseEntity.status(HttpStatus.CREATED).body(productService.create(product));
 	}
 
 }

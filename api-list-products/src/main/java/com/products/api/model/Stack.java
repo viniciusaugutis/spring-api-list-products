@@ -17,7 +17,7 @@ public class Stack {
 
 	@NotNull(message = "O nome da tecnologia é um campo obrigatório")
 	private String name;
-	
+
 	public Long getId() {
 		return id;
 	}

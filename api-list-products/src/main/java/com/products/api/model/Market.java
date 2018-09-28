@@ -17,7 +17,7 @@ public class Market {
 
 	@NotNull(message = "O nome do mercado alvo é um campo obrigatório")
 	private String name;
-	
+
 	public Long getId() {
 		return id;
 	}
@@ -35,7 +35,11 @@ public class Market {
 	}
 
 	public Market() {
-
+	}
+	
+	public Market(Market market) {
+		this.id = market.getId();
+		this.name = market.getName();
 	}
 
 	@Override

@@ -23,18 +23,18 @@ public class Product {
 
 	@NotNull(message = "O nome do produto é um campo obrigatório")
 	private String name;
-	
+
 	private String description;
-	
-	@ManyToMany(fetch = FetchType.LAZY)
+
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "product_market", joinColumns = { @JoinColumn(name = "product_id") }, inverseJoinColumns = {
-				@JoinColumn(name = "market_id") })
+			@JoinColumn(name = "market_id") })
 	private List<Market> targetMarket;
-	
+
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "product_stack", joinColumns = { @JoinColumn(name = "product_id") }, inverseJoinColumns = {
-				@JoinColumn(name = "stack_id") })
-	private List<Market> stack;
+			@JoinColumn(name = "stack_id") })
+	private List<Stack> stack;
 
 	public Long getId() {
 		return id;
@@ -68,11 +68,11 @@ public class Product {
 		this.targetMarket = targetMarket;
 	}
 
-	public List<Market> getStack() {
+	public List<Stack> getStack() {
 		return stack;
 	}
 
-	public void setStack(List<Market> stack) {
+	public void setStack(List<Stack> stack) {
 		this.stack = stack;
 	}
 
